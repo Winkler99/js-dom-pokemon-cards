@@ -67,11 +67,9 @@ function renderPokemon(){
        }
        cardText.appendChild(cardPokemonGames)
 
-        const img = document.getElementsByName(".png")
-        const imageSources = pokemon.sprites;
-        for(let j = 0; j < pokemon.sprites.length; j++){
-            imageSources [j] = pokemon.sprites[j]
-        }
+        
+        const imageSources = [pokemon.sprites.front_shiny, pokemon.sprites.front_default, pokemon.sprites.other['official-artwork'].front_default]
+       
         
         let index = 0;
         let travel;
@@ -82,8 +80,8 @@ function renderPokemon(){
       
             console.log(index);
             if (index < 0 || index === imageSources.length) index = 0;
-            img.src = imageSources[index];
-          }, 6000);
+            cardImage.src = imageSources[index];
+          }, 1000);
         };
       
         const changeImage1 = () => {
@@ -98,7 +96,7 @@ function renderPokemon(){
           if (index === imageSources.length - 1) index = -1;
       
           clearInterval(travel);
-          img.src = imageSources[++index];
+          cardImage.src = imageSources[++index];
           startTravel();
         }
       
